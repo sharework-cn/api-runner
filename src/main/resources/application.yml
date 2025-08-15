@@ -1,0 +1,70 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: api-runner
+  
+  # 日志配置
+  logging:
+    level:
+      com.example.apirunner: INFO
+      org.springframework.web: INFO
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+      file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file:
+      name: logs/api-runner.log
+      max-size: 100MB
+      max-history: 30
+
+# 自定义API配置
+api:
+  # 是否启用QPS控制
+  qps-control-enabled: true
+  # 默认QPS（当URL未配置时使用）
+  default-qps: 1000
+  # 并发控制线程池大小
+  thread-pool-size: 100
+  # QPS控制时间窗口（毫秒）
+  qps-window-ms: 1000
+  # QPS误差容忍度（百分比）
+  qps-tolerance: 5.0
+  # QPS控制方式：DELAY(延迟) 或 CPU(CPU消耗)
+  qps-control-mode: CPU
+  # CPU消耗时的循环次数（仅在CPU模式下使用）
+  cpu-loop-count: 150000
+  # 是否启用并发监控日志
+  enable-concurrent-monitor: false
+  # 并发监控日志输出间隔（秒）
+  concurrent-monitor-interval: 5
+
+# Spring Boot Actuator配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+  info:
+    env:
+      enabled: true
+    java:
+      enabled: true
+    os:
+      enabled: true
+
+# 应用信息
+info:
+  app:
+    name: API Runner
+    description: 接口压测服务
+    version: 1.0.0
+    author: API Runner Team

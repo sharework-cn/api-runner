@@ -1,0 +1,82 @@
+# 高级URL配置文件示例
+# 支持多个并发级别配置，每个级别对应不同的目标QPS
+# 误差容忍度：90% - 120%
+
+urls:
+  # 用户相关接口 - 多级别配置
+  - pattern: "/api/user/*"
+    concurrentLevels:
+      - concurrentLevel: 50
+        targetQps: 500
+        tolerance: 5.0
+        description: "低并发级别：45-60并发，QPS限制500"
+      - concurrentLevel: 100
+        targetQps: 300
+        tolerance: 5.0
+        description: "中并发级别：90-120并发，QPS限制300"
+      - concurrentLevel: 200
+        targetQps: 150
+        tolerance: 5.0
+        description: "高并发级别：180-240并发，QPS限制150"
+      - concurrentLevel: 500
+        targetQps: 80
+        tolerance: 5.0
+        description: "超高并发级别：450-600并发，QPS限制80"
+    description: "用户相关接口（智能多级别QPS控制）"
+
+  # 订单相关接口 - 多级别配置
+  - pattern: "/api/order/*"
+    concurrentLevels:
+      - concurrentLevel: 30
+        targetQps: 200
+        tolerance: 5.0
+        description: "低并发级别：27-36并发，QPS限制200"
+      - concurrentLevel: 80
+        targetQps: 100
+        tolerance: 5.0
+        description: "中并发级别：72-96并发，QPS限制100"
+      - concurrentLevel: 150
+        targetQps: 50
+        tolerance: 5.0
+        description: "高并发级别：135-180并发，QPS限制50"
+    description: "订单相关接口（智能多级别QPS控制）"
+
+  # 产品相关接口 - 多级别配置
+  - pattern: "/api/product/*"
+    concurrentLevels:
+      - concurrentLevel: 100
+        targetQps: 1000
+        tolerance: 5.0
+        description: "低并发级别：90-120并发，QPS限制1000"
+      - concurrentLevel: 300
+        targetQps: 600
+        tolerance: 5.0
+        description: "中并发级别：270-360并发，QPS限制600"
+      - concurrentLevel: 600
+        targetQps: 300
+        tolerance: 5.0
+        description: "高并发级别：540-720并发，QPS限制300"
+    description: "产品相关接口（智能多级别QPS控制）"
+
+  # 支付相关接口 - 多级别配置（更严格的QPS控制）
+  - pattern: "/api/payment/*"
+    concurrentLevels:
+      - concurrentLevel: 20
+        targetQps: 100
+        tolerance: 3.0
+        description: "低并发级别：19-21并发，QPS限制100（高精度）"
+      - concurrentLevel: 50
+        targetQps: 50
+        tolerance: 3.0
+        description: "中并发级别：48-52并发，QPS限制50（高精度）"
+      - concurrentLevel: 100
+        targetQps: 20
+        tolerance: 3.0
+        description: "高并发级别：97-103并发，QPS限制20（高精度）"
+    description: "支付相关接口（高精度QPS控制）"
+
+  # 兼容旧版本的基础配置
+  - pattern: "/api/legacy/*"
+    qps: 100
+    concurrent: 50
+    description: "旧版本兼容接口"
