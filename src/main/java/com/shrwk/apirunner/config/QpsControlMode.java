@@ -1,4 +1,4 @@
-package com.example.apirunner.config;
+package com.shrwk.apirunner.config;
 
 /**
  * QPS控制方式枚举

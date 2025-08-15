@@ -1,4 +1,4 @@
-package com.example.apirunner;
+package com.shrwk.apirunner;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

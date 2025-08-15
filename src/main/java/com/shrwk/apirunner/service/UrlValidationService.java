@@ -1,7 +1,7 @@
-package com.example.apirunner.service;
+package com.shrwk.apirunner.service;
 
-import com.example.apirunner.config.ApiConfig;
-import com.example.apirunner.model.UrlConfig;
+import com.shrwk.apirunner.config.ApiConfig;
+import com.shrwk.apirunner.model.UrlConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

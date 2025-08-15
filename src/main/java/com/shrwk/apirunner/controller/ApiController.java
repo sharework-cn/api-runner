@@ -1,11 +1,11 @@
-package com.example.apirunner.controller;
+package com.shrwk.apirunner.controller;
 
-import com.example.apirunner.config.ApiConfig;
-import com.example.apirunner.model.ApiResponse;
-import com.example.apirunner.model.UrlConfig;
-import com.example.apirunner.service.QpsControlService;
-import com.example.apirunner.service.UrlValidationService;
-import com.example.apirunner.service.ConcurrentControlService;
+import com.shrwk.apirunner.config.ApiConfig;
+import com.shrwk.apirunner.model.ApiResponse;
+import com.shrwk.apirunner.model.UrlConfig;
+import com.shrwk.apirunner.service.QpsControlService;
+import com.shrwk.apirunner.service.UrlValidationService;
+import com.shrwk.apirunner.service.ConcurrentControlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

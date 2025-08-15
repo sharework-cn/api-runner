@@ -1,4 +1,4 @@
-package com.example.apirunner.model;
+package com.shrwk.apirunner.model;
 
 import java.util.regex.Pattern;
 import java.util.List;

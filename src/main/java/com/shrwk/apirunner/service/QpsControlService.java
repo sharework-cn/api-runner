@@ -1,7 +1,7 @@
-package com.example.apirunner.service;
+package com.shrwk.apirunner.service;
 
-import com.example.apirunner.config.ApiConfig;
-import com.example.apirunner.model.UrlConfig;
+import com.shrwk.apirunner.config.ApiConfig;
+import com.shrwk.apirunner.config.QpsControlMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +55,7 @@ public class QpsControlService {
         
         // 检查是否需要控制QPS
         if (counter.shouldControl()) {
-            if (apiConfig.getQpsControlMode() == com.example.apirunner.config.QpsControlMode.DELAY) {
+            if (apiConfig.getQpsControlMode() == QpsControlMode.DELAY) {
                 // 延迟方式控制QPS
                 long delayMs = calculateDelay(counter, targetQps);
                 if (delayMs > 0) {

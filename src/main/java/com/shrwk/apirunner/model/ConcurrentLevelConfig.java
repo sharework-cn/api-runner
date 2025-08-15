@@ -1,4 +1,4 @@
-package com.example.apirunner.model;
+package com.shrwk.apirunner.model;
 
 /**
  * 并发级别配置模型

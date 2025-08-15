@@ -172,7 +172,7 @@ curl http://localhost:8080/api/config/urls
 ```yaml
 logging:
   level:
-    com.example.apirunner.service.QpsControlService: DEBUG
+    service.com.shrwk.apirunner.QpsControlService: DEBUG
 ```
 
 这将显示详细的QPS控制过程，包括延迟时间和CPU消耗时间的计算。
